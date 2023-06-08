@@ -36,7 +36,11 @@
   },
   "homepage": "https://github.com/realcoloride/node_characterai#readme"
   },
+
   "engines": {
+
     "node": ">= 12.14.0"
+
   }
+
 }
