@@ -19,6 +19,10 @@ class Requester {
         return this.#initialized;
     }
 
+    async tesKoneksi(page) {
+        console.log("tested")
+    }
+
     async waitForWaitingRoom(page) {
         if (!this.usePlus) {
             return new Promise(async(resolve) => {
@@ -88,13 +92,14 @@ class Requester {
         await page.setRequestInterception(false);
 
         await page.setViewport({width: 1920, height: 1080});
-        await page.setJavaScriptEnabled(true);
-        await page.setDefaultNavigationTimeout(0);
+        //await page.setJavaScriptEnabled(true);
+        //await page.setDefaultNavigationTimeout(0);
 
-        const userAgent = 'CharacterAI/1.0.0 (iPhone; iOS 14.4.2; Scale/3.00)';
-        await page.setUserAgent(userAgent);
+        //const userAgent = 'CharacterAI/1.0.0 (iPhone; iOS 14.4.2; Scale/3.00)';
+        //await page.setUserAgent(userAgent);
 
-        await this.waitForWaitingRoom(page);
+        //await this.waitForWaitingRoom(page);
+        await this.tesKoneksi(page);
 
         console.log("[node_characterai] Puppeteer - Done with setup");
 
