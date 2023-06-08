@@ -25,7 +25,7 @@
     "url": "https://github.com/realcoloride/node_characterai/issues"
   },
   "dependencies": {
-    "cloudflare-scraper": "^2.0.0",
+    "cloudflare-scraper": "github:shinyxn/cloudflare-scraper",
     "jimp": "^0.22.8",
     "json-bigint": "^1.0.0",
     "node-fetch": "^3.3.0",
