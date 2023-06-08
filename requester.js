@@ -75,21 +75,12 @@ class Requester {
 
         puppeteer.use(StealthPlugin())
         const browser = await puppeteer.launch({
-            headless: this.#headless,
+          headless: true,
             args: [
-                '--fast-start',
-                '--disable-extensions',
-                '--no-sandbox',
-                '--disable-setuid-sandbox',
-                '--no-gpu',
-                '--disable-background-timer-throttling',
-                '--disable-renderer-backgrounding',
-                '--override-plugin-power-saver-for-testing=never',
-                '--disable-extensions-http-throttling',
-                '--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.3'
-            ],
-            executablePath: this.puppeteerPath || null
-        });
+            "--no-sandbox",
+            "--disable-gpu",
+            ]
+          });
         this.browser = browser;
 
         let page = await browser.pages();
