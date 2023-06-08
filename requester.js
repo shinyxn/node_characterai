@@ -28,7 +28,7 @@ class Requester {
 
         const screenData = await page.screenshot({encoding: 'binary', type: 'jpeg', quality: 100});
         if (!!screenData) {
-        fs.writeFileSync('123.jpg', screenData);
+        fs.writeFileSync('ayayayaya.jpg', screenData);
         } else {
         throw Error('Unable to take screenshot');
         }
