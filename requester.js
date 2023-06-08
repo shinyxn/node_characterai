@@ -21,7 +21,7 @@ class Requester {
     }
 
     async tesKoneksi(page) {
-        await page.goto("https://beta.character.ai", {
+        await page.goto("https://google.com", {
             timeout: 0,
             waitUntil: 'networkidle0',
           });
