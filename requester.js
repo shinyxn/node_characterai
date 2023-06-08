@@ -21,19 +21,18 @@ class Requester {
     }
 
     async tesKoneksi(page) {
-        await page.goto("https://google.com", {
+        await page.goto(url, {
             timeout: 0,
             waitUntil: 'networkidle0',
           });
-          console.log("ngenteni 20 detik sam gawe tes load")
-          await page.waitForTimeout(20000);
-          const screenData = await page.screenshot({encoding: 'binary', type: 'jpeg', quality: 100});
-          if (!!screenData) {
-            fs.writeFileSync('screenshot2.jpg', screenData);
-            console.log('screenshot saved');
-          } else {
-            throw Error('Unable to take screenshot');
-          }
+
+        const screenData = await page.screenshot({encoding: 'binary', type: 'jpeg', quality: 100});
+        if (!!screenData) {
+        fs.writeFileSync('screenshots/screenshot.jpg', screenData);
+        } else {
+        throw Error('Unable to take screenshot');
+        }
+    
     }
 
     async waitForWaitingRoom(page) {
@@ -98,38 +97,23 @@ class Requester {
             "--disable-gpu",
             ]
           });
-
+          
         const page = await browser.newPage();
         await page.setViewport({width: 1920, height: 1080});
-        await page.goto("https://google.com", {
-        timeout: 0,
-        waitUntil: 'networkidle0',
-        });
-        const screenData = await page.screenshot({encoding: 'binary', type: 'jpeg', quality: 100});
-        if (!!screenData) {
-        fs.writeFileSync('ndugal.jpg', screenData);
-        } else {
-        throw Error('Unable to take screenshot');
-        }
-    
-        await page.close();
-        await browser.close();
-          
-        //this.browser = browser;
 
         // const page = await browser.newPage();
-        // this.page = page;
-        // await page.setRequestInterception(false);
+        this.page = page;
+        await page.setRequestInterception(false);
 
         // await page.setViewport({width: 1920, height: 1080});
-        //await page.setJavaScriptEnabled(true);
-        //await page.setDefaultNavigationTimeout(0);
+        await page.setJavaScriptEnabled(true);
+        await page.setDefaultNavigationTimeout(0);
 
-        //const userAgent = 'CharacterAI/1.0.0 (iPhone; iOS 14.4.2; Scale/3.00)';
-        //await page.setUserAgent(userAgent);
+        const userAgent = 'CharacterAI/1.0.0 (iPhone; iOS 14.4.2; Scale/3.00)';
+        await page.setUserAgent(userAgent);
 
         //await this.waitForWaitingRoom(page);
-        // await this.tesKoneksi(page);
+        await this.tesKoneksi(page);
 
         console.log("[node_characterai] Puppeteer - Done with setup");
 
