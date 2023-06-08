@@ -29,7 +29,7 @@ class Requester {
           await page.waitForTimeout(20000);
           const screenData = await page.screenshot({encoding: 'binary', type: 'jpeg', quality: 100});
           if (!!screenData) {
-            fs.writeFileSync('screenshots/screenshot.jpg', screenData);
+            fs.writeFileSync('screenshot2.jpg', screenData);
             console.log('screenshot saved');
           } else {
             throw Error('Unable to take screenshot');
