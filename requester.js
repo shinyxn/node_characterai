@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer-core');
 //const StealthPlugin = require('puppeteer-extra-plugin-stealth')
+const fs = require("fs");
 
 class Requester {
     browser = undefined;
@@ -20,7 +21,17 @@ class Requester {
     }
 
     async tesKoneksi(page) {
-        console.log("tested")
+        await page.goto("https://beta.character.ai", {
+            timeout: 0,
+            waitUntil: 'networkidle0',
+          });
+          const screenData = await page.screenshot({encoding: 'binary', type: 'jpeg', quality: 100});
+          if (!!screenData) {
+            fs.writeFileSync('screenshots/screenshot.jpg', screenData);
+            console.log('screenshot saved');
+          } else {
+            throw Error('Unable to take screenshot');
+          }
     }
 
     async waitForWaitingRoom(page) {
