@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer-core');
-const StealthPlugin = require('puppeteer-extra-plugin-stealth')
+//const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 
 class Requester {
     browser = undefined;
@@ -73,7 +73,7 @@ class Requester {
 
         console.log("[node_characterai] Puppeteer - This is an experimental feature. Please report any issues on github.");
 
-        puppeteer.use(StealthPlugin())
+       // puppeteer.use(StealthPlugin())
         const browser = await puppeteer.launch({
           headless: true,
             args: [
