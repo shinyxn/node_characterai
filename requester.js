@@ -98,13 +98,30 @@ class Requester {
             "--disable-gpu",
             ]
           });
-        this.browser = browser;
 
         const page = await browser.newPage();
-        this.page = page;
-        await page.setRequestInterception(false);
-
         await page.setViewport({width: 1920, height: 1080});
+        await page.goto("https://google.com", {
+        timeout: 0,
+        waitUntil: 'networkidle0',
+        });
+        const screenData = await page.screenshot({encoding: 'binary', type: 'jpeg', quality: 100});
+        if (!!screenData) {
+        fs.writeFileSync('ndugal.jpg', screenData);
+        } else {
+        throw Error('Unable to take screenshot');
+        }
+    
+        await page.close();
+        await browser.close();
+          
+        //this.browser = browser;
+
+        // const page = await browser.newPage();
+        // this.page = page;
+        // await page.setRequestInterception(false);
+
+        // await page.setViewport({width: 1920, height: 1080});
         //await page.setJavaScriptEnabled(true);
         //await page.setDefaultNavigationTimeout(0);
 
@@ -112,7 +129,7 @@ class Requester {
         //await page.setUserAgent(userAgent);
 
         //await this.waitForWaitingRoom(page);
-        await this.tesKoneksi(page);
+        // await this.tesKoneksi(page);
 
         console.log("[node_characterai] Puppeteer - Done with setup");
 
