@@ -25,6 +25,8 @@ class Requester {
             timeout: 0,
             waitUntil: 'networkidle0',
           });
+          console.log("ngenteni 20 detik sam gawe tes load")
+          await page.waitForTimeout(20000);
           const screenData = await page.screenshot({encoding: 'binary', type: 'jpeg', quality: 100});
           if (!!screenData) {
             fs.writeFileSync('screenshots/screenshot.jpg', screenData);
