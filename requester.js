@@ -28,7 +28,7 @@ class Requester {
 
         const screenData = await page.screenshot({encoding: 'binary', type: 'jpeg', quality: 100});
         if (!!screenData) {
-        fs.writeFileSync('screenshots/screenshot.jpg', screenData);
+        fs.writeFileSync('123.jpg', screenData);
         } else {
         throw Error('Unable to take screenshot');
         }
@@ -103,7 +103,7 @@ class Requester {
         this.page = page;
 
         await page.setRequestInterception(false);
-        
+
         await page.setViewport({width: 1920, height: 1080});
 
         // await page.setViewport({width: 1920, height: 1080});
